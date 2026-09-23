@@ -13,7 +13,7 @@ plugins/                          ← da copiare nella cartella principale di Ho
 └── email_wysiwyg/                ← un plugin per cartella
     ├── plugin.php                ← obbligatorio
     └── ...                       ← altri file del plugin
-hoteldruid_modificato_plugins/
+hoteldruid_plugins/
 └── includes/funzioni.php         ← funzioni.php di HotelDruid 3.0.8 con la riga di aggancio
 ```
 
@@ -25,7 +25,7 @@ hoteldruid_modificato_plugins/
      ```php
      if (file_exists("./plugins/caricatore.php")) include("./plugins/caricatore.php"); # sistema di plugin (facoltativo)
      ```
-   - oppure, se la versione di HotelDruid è la 3.0.8, sostituire il file con `hoteldruid_modificato_plugins/includes/funzioni.php`.
+   - oppure, se la versione di HotelDruid è la 3.0.8, sostituire il file con `hoteldruid_plugins/includes/funzioni.php`.
 
 È l'unica modifica al codice di HotelDruid: nessuna riga originale viene cambiata o rimossa.
 
