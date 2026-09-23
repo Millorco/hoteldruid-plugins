@@ -20,14 +20,6 @@ L'email inviata non cambia. La textarea di HotelDruid resta nel modulo, solo nas
 | `anteprima_email.css` | Stile, con classi prefissate `ape-`. |
 | `lingue.php` | Testi in italiano, inglese e spagnolo (funzione `apeml_testi()`). |
 
-## Passaggio dalla versione precedente
-
-Se è installata la versione precedente del plugin (cartella `plugin_anteprima_email/`, agganciata con una riga in `visualizza_contratto.php`):
-1. cancellare la cartella `plugin_anteprima_email/`;
-2. ripristinare il `visualizza_contratto.php` originale di HotelDruid, oppure togliere la riga che include `./plugin_anteprima_email/anteprima_email.php`.
-
-Se nel frattempo restano installate entrambe le versioni, questo plugin si accorge che l'altra ha già agito e non fa nulla, così non compaiono due riquadri. Le funzioni PHP hanno nomi diversi (`apeml_...` qui, `ape_...` nella versione precedente), quindi non ci sono conflitti.
-
 ## Disattivazione
 
 Creare nella cartella un file vuoto `DISATTIVATO`, oppure rinominare la cartella con un `_` iniziale, oppure cancellarla.
