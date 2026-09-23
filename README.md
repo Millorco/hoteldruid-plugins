@@ -108,18 +108,6 @@ L'aggancio `"html"` funziona così: il caricatore raccoglie in memoria (`ob_star
 - Sulle pagine con funzioni `"html"`, l'output arriva al browser tutto insieme alla fine, invece che un po' alla volta. Per questo è meglio non registrare `"html"` su `"*"` e limitarsi alle pagine necessarie.
 - In `creaanno.php` la variabile `$pag` vale `"inizio.php"`: per HotelDruid quella pagina si chiama "inizio.php", e così anche per i plugin.
 
-## Prove eseguite
-
-Le prove sono state fatte su un'installazione reale di prova: HotelDruid 3.0.8, database SQLite, server integrato di PHP 8.2 e Chrome headless. Le prove specifiche del plugin sono in [`plugins/email_wysiwyg/README.md`](plugins/email_wysiwyg/README.md).
-
-| Prova | Risultato |
-|-------|-----------|
-| `php -l` su `caricatore.php` e `funzioni.php` modificato | nessun errore |
-| Pagine senza plugin registrati (`inizio.php`, `tabella.php`, documenti HTML) | nessun intervento, nessun errore nel log |
-| Download RTF, TXT, CSV da `visualizza_contratto.php` | `Content-Type` e contenuto originali |
-| Accesso diretto a `plugins/caricatore.php` e ai file PHP del plugin | risposta vuota |
-| Senza `plugins/`, oppure con il plugin disattivato (`DISATTIVATO`) | pagina identica byte per byte all'originale |
-
 ## Licenza
 
 GNU Affero General Public License versione 3 o successiva, come HotelDruid (vedi [`LICENSE`](LICENSE)).
