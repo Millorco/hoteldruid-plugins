@@ -1,0 +1,37 @@
+/* Plugin "Anteprima email" per HotelDruid: tutte le classi hanno il prefisso ape- */
+.ape-riquadro {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 100%;
+}
+.ape-pulsanti {
+  margin: 0 0 4px 0;
+}
+.ape-pulsante div {
+  padding: 1px 6px;
+}
+.ape-corpo {
+  box-sizing: border-box;
+  max-width: 100%;
+  min-height: 8em;
+  padding: 6px 8px;
+  border: 1px solid #444444;
+  background-color: #ffffff;
+  color: #000000;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: auto;
+  resize: vertical;
+}
+.ape-vuoto {
+  color: #777777;
+  font-style: italic;
+}
+.ape-riquadro textarea {
+  max-width: 100%;
+}
+.ape-nota {
+  margin: 3px 0 0 0;
+  font-size: 85%;
+  color: #555555;
+}

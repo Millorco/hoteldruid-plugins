@@ -1,0 +1,10 @@
+--- a/includes/funzioni.php
++++ b/includes/funzioni.php
+@@ -87,6 +87,7 @@
+ #@include(C_DATI_PATH."/costanti.php");
+ define('C_PHPR_VERSIONE_NUM',3.08);
+ define('C_PHPR_VERSIONE_TXT',"3.0.8");
++if (file_exists("./plugins/caricatore.php")) include("./plugins/caricatore.php"); # sistema di plugin (facoltativo)
+ 
+ if (!isset($nome_utente_phpr)) $nome_utente_phpr = "";
+ if (!isset($password_phpr)) $password_phpr = "";

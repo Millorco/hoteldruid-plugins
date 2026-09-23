@@ -1,0 +1,103 @@
+# Sistema di plugin per HotelDruid
+
+Un'unica riga aggiunta a `includes/funzioni.php` carica il file `plugins/caricatore.php`, che attiva tutti i plugin presenti nelle sottocartelle di `plugins/`. `funzioni.php` è incluso da tutte le pagine di HotelDruid, quindi i plugin possono agire su qualsiasi pagina.
+
+```
+hoteldruid/
+├── includes/funzioni.php        ← una riga aggiunta
+└── plugins/
+    ├── caricatore.php           ← il sistema di plugin
+    ├── README.md
+    └── anteprima_email/         ← un plugin per cartella
+        ├── plugin.php           ← obbligatorio
+        └── ...                  ← altri file del plugin
+```
+
+## Installazione
+
+1. Copiare la cartella `plugins/` nella cartella principale di HotelDruid, accanto a `visualizza_contratto.php`, `inizio.php`, ecc.
+2. Aggiungere l'aggancio in `includes/funzioni.php` in uno di questi modi:
+   - sostituire il file con `hoteldruid_modificato_plugins/includes/funzioni.php`, se la versione di HotelDruid è la stessa (3.0.8);
+   - oppure applicare la patch dalla cartella di HotelDruid:
+     ```
+     patch -p1 < /percorso/hoteldruid_modificato_plugins/modifiche.patch
+     ```
+   - oppure aggiungere a mano, subito dopo la riga `define('C_PHPR_VERSIONE_TXT',"3.0.8");`, la riga:
+     ```php
+     if (file_exists("./plugins/caricatore.php")) include("./plugins/caricatore.php"); # sistema di plugin (facoltativo)
+     ```
+
+**Attenzione:** un aggiornamento di HotelDruid sovrascrive `includes/funzioni.php`. Dopo ogni aggiornamento va rimessa la riga.
+
+## Attivare e disattivare i plugin
+
+- Un plugin è **attivo** se la sua cartella contiene `plugin.php`.
+- Per **disattivarlo** senza cancellarlo:
+  - creare nella sua cartella un file vuoto chiamato `DISATTIVATO`;
+  - oppure rinominare la cartella con un `_` iniziale (es. `_anteprima_email`).
+- Per disattivare **tutto il sistema**: cancellare o rinominare la cartella `plugins/`. Grazie a `file_exists()`, HotelDruid funziona esattamente come l'originale. Senza plugin attivi su una pagina, la pagina resta identica byte per byte.
+
+I nomi delle cartelle possono contenere solo lettere, cifre, `_` e `-`. I plugin sono caricati in ordine alfabetico di cartella.
+
+## Scrivere un plugin
+
+`plugin.php` viene incluso all'inizio di ogni pagina. Deve controllare di essere caricato dal sistema e registrare le proprie funzioni con `hdp_registra()`:
+
+```php
+<?php
+if (!defined('HDP_CARICATORE')) return;
+
+hdp_registra("inizio.php","html","mioplugin_html");
+
+function mioplugin_html ($html) {
+global $anno;
+if (!hdp_utente_autenticato()) return $html;
+return hdp_inserisci_prima_di_body($html,"<p>Anno: ".hdp_h($anno)."</p>");
+} # fine function mioplugin_html
+?>
+```
+
+### Punti di aggancio
+
+`hdp_registra($pagine, $tipo, $funzione)`:
+- `$pagine`: il nome di una pagina (il valore di `$pag`, es. `"visualizza_contratto.php"`), un array di pagine, oppure `"*"` per tutte;
+- `$funzione`: il **nome** della funzione, come stringa. Non si usano closure, per compatibilità con le vecchie versioni di PHP;
+- `$tipo`: `"inizio"` oppure `"html"`, come descritto sotto.
+
+| Tipo | Quando | Parametri | Note |
+|------|--------|-----------|------|
+| `"inizio"` | Subito, dentro `funzioni.php`, prima della logica della pagina e **prima di `controlla_login()`**. | nessuno | Non deve scrivere nulla nella pagina. Le variabili della richiesta sono già lette; a queste si accede con `global`. |
+| `"html"` | Alla fine della pagina, dopo tutta la sua esecuzione. Le variabili globali della pagina sono ancora disponibili. | l'HTML prodotto dalla pagina | Deve **restituire** l'HTML, modificato o no. Viene chiamata solo se la pagina produce HTML: download RTF, TXT, CSV ecc. vengono lasciati intatti. |
+
+L'aggancio `"html"` funziona così: il caricatore raccoglie in memoria (`ob_start()`) l'output della pagina, e la funzione registrata con `register_shutdown_function()` lo passa ai plugin prima di inviarlo. Questo succede **solo sulle pagine per cui almeno un plugin ha registrato una funzione `"html"`**; le altre pagine sono inviate come sempre, man mano che vengono prodotte.
+
+### Funzioni disponibili
+
+| Funzione | Uso |
+|----------|-----|
+| `hdp_utente_autenticato()` | Vero se la pagina ha verificato la sessione (`$id_utente` impostato da `controlla_login()`). |
+| `hdp_inserisci_prima_di_body($html, $codice)` | Inserisce `$codice` prima di `</body>`. |
+| `hdp_h($testo)` | `htmlspecialchars()` con `ENT_QUOTES` e UTF-8. |
+| `HDP_CARTELLA` | Percorso della cartella `plugins/`. Nel plugin, per i propri file usare `dirname(__FILE__)`. |
+| `HDP_VERSIONE` | Versione del sistema di plugin. |
+
+### Regole di sicurezza
+
+- Il caricatore si ferma subito se non è incluso da una pagina che si trova nella cartella principale di HotelDruid. Aprendo direttamente `plugins/caricatore.php` o un `plugin.php` non succede nulla: la risposta è vuota.
+- I plugin **non devono fidarsi** di essere eseguiti dopo il login:
+  - nelle funzioni `"html"` controllare sempre `hdp_utente_autenticato()`, più gli eventuali privilegi specifici della pagina (per esempio `$anno_utente_attivato == "SI"`, o le variabili `$priv_...` che la pagina imposta);
+  - le funzioni `"inizio"` sono eseguite anche per utenti non autenticati.
+- Tutto ciò che si scrive nella pagina va passato da `hdp_h()`.
+- Usare nomi di funzioni con un prefisso proprio del plugin, perché tutte le funzioni sono globali.
+- Non aprire nuovi indirizzi accessibili dall'esterno senza gli stessi controlli di HotelDruid.
+
+## Limiti
+
+- I plugin possono agire solo **all'inizio** e **alla fine** di una pagina. Per intervenire nel mezzo della logica di HotelDruid (per esempio su come `manda_email()` costruisce le intestazioni, o sul calcolo delle tariffe) servirebbero altre modifiche al codice originale.
+- I plugin che modificano l'HTML dipendono dal markup di HotelDruid, che può cambiare tra una versione e l'altra.
+- Sulle pagine con funzioni `"html"`, l'output arriva al browser tutto insieme alla fine, invece che un po' alla volta mentre la pagina viene generata. Per questo è meglio non registrare `"html"` su `"*"` e limitarsi alle pagine necessarie.
+- In `creaanno.php` la variabile `$pag` vale `"inizio.php"`: per HotelDruid quella pagina si chiama "inizio.php", e così anche per i plugin.
+
+## Licenza
+
+GNU Affero General Public License versione 3 o successiva, come HotelDruid.
