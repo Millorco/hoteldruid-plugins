@@ -19,7 +19,7 @@ hoteldruid_plugins/
 
 ## Installazione
 
-1. Copiare la cartella `plugins/` nella cartella principale di HotelDruid, accanto a `inizio.php`, `visualizza_contratto.php`, ecc.
+1. Copiare la cartella `plugins/` nella cartella principale di HotelDruid.
 2. Aggiungere l'aggancio in `includes/funzioni.php`, in uno di questi modi:
    - aggiungere a mano, subito dopo la riga `define('C_PHPR_VERSIONE_TXT',"3.0.8");` (riga 89), la riga:
      ```php
