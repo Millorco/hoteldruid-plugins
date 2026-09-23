@@ -25,7 +25,7 @@ hoteldruid_plugins/
      ```php
      if (file_exists("./plugins/caricatore.php")) include("./plugins/caricatore.php"); # sistema di plugin (facoltativo)
      ```
-   - oppure, se la versione di HotelDruid è la 3.0.8, sostituire il file con `hoteldruid_plugins/includes/funzioni.php`.
+   - oppure, sostituire il file con `hoteldruid_plugins/includes/funzioni.php`.
 
 È l'unica modifica al codice di HotelDruid: nessuna riga originale viene cambiata o rimossa.
 
