@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################################
-#    Plugin "Anteprima email" per HOTELDRUID - testi dell'interfaccia
+#    Plugin "email_wysiwyg" per HOTELDRUID - testi dell'interfaccia
 #    Lingue: italiano (predefinita), inglese, spagnolo.
 #    Le altre lingue di HotelDruid usano i testi in inglese.
 ##################################################################################

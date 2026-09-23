@@ -1,4 +1,4 @@
-# Plugin "Anteprima email" (sistema di plugin)
+# Plugin "email_wysiwyg" (sistema di plugin)
 
 Plugin per il sistema di plugin di `plugins/`. Non serve nessuna modifica a `visualizza_contratto.php`: basta l'aggancio unico in `includes/funzioni.php` (vedi `../README.md`).
 
@@ -16,8 +16,8 @@ L'email inviata non cambia. La textarea di HotelDruid resta nel modulo, solo nas
 | File | Contenuto |
 |------|-----------|
 | `plugin.php` | Registra la funzione `apeml_html()` sull'aggancio `"html"` di `visualizza_contratto.php`. Dopo i controlli su sessione, permessi e tipo di documento, legge formato e copie nascoste del modello e inserisce CSS e JS prima di `</body>`. |
-| `anteprima_email.js` | Mostra il testo formattato al posto della textarea e gestisce il pulsante. |
-| `anteprima_email.css` | Stile, con classi prefissate `ape-`. |
+| `email_wysiwyg.js` | Mostra il testo formattato al posto della textarea e gestisce il pulsante. |
+| `email_wysiwyg.css` | Stile, con classi prefissate `ape-`. |
 | `lingue.php` | Testi in italiano, inglese e spagnolo (funzione `apeml_testi()`). |
 
 ## Disattivazione

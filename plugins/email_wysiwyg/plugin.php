@@ -1,7 +1,7 @@
 <?php
 
 ##################################################################################
-#    Plugin "Anteprima email" per HOTELDRUID (versione per il sistema di plugin)
+#    Plugin "email_wysiwyg" per HOTELDRUID (versione per il sistema di plugin)
 #
 #    In visualizza_contratto.php, per le email HTML, mostra al posto del codice
 #    HTML il testo compilato e formattato in modo leggibile; il sorgente HTML
@@ -80,10 +80,10 @@ for ($num1 = 0 ; $num1 < count($nomi_iim) ; $num1++) $codice .= "<span class=\"a
 foreach ($testi as $chiave => $valore) $codice .= "<span data-ape-txt=\"".hdp_h($chiave)."\">".hdp_h($valore)."</span>";
 $codice .= "</div>
 <style type=\"text/css\">
-".@file_get_contents("$cartella/anteprima_email.css")."
+".@file_get_contents("$cartella/email_wysiwyg.css")."
 </style>
 <script type=\"text/javascript\">
-".@file_get_contents("$cartella/anteprima_email.js")."
+".@file_get_contents("$cartella/email_wysiwyg.js")."
 </script>
 ";
 

@@ -1,6 +1,6 @@
 # HotelDruid plugins
 
-Sistema di plugin per [HotelDruid](https://www.hoteldruid.com/) 3.0.8, con il plugin **Anteprima email**.
+Sistema di plugin per [HotelDruid](https://www.hoteldruid.com/) 3.0.8, con il plugin **email_wysiwyg**.
 
 Il sistema si attiva con **una sola riga** aggiunta a `includes/funzioni.php`. Tutti i plugin stanno in sottocartelle di `plugins/`, e senza la cartella `plugins/` HotelDruid funziona esattamente come l'originale.
 
@@ -9,7 +9,7 @@ Il sistema si attiva con **una sola riga** aggiunta a `includes/funzioni.php`. T
 | Cartella | Contenuto |
 |----------|-----------|
 | [`plugins/`](plugins/) | Il caricatore (`caricatore.php`) e i plugin. Da copiare nella cartella principale di HotelDruid. Istruzioni e guida per scrivere plugin in [`plugins/README.md`](plugins/README.md). |
-| [`plugins/anteprima_email/`](plugins/anteprima_email/) | In `visualizza_contratto.php`, per le email HTML, mostra al posto del codice HTML il testo compilato e formattato in modo leggibile, con il pulsante "Mostra sorgente HTML". |
+| [`plugins/email_wysiwyg/`](plugins/email_wysiwyg/) | In `visualizza_contratto.php`, per le email HTML, mostra al posto del codice HTML il testo compilato e formattato in modo leggibile, con il pulsante "Mostra sorgente HTML". |
 | [`hoteldruid_modificato_plugins/`](hoteldruid_modificato_plugins/) | `includes/funzioni.php` con la riga di aggancio, `modifiche.patch` (diff rispetto a HotelDruid 3.0.8) e `MODIFICHE.md` con i dettagli e le prove eseguite. |
 
 ## Installazione rapida

@@ -8,7 +8,7 @@ hoteldruid/
 └── plugins/
     ├── caricatore.php           ← il sistema di plugin
     ├── README.md
-    └── anteprima_email/         ← un plugin per cartella
+    └── email_wysiwyg/           ← un plugin per cartella
         ├── plugin.php           ← obbligatorio
         └── ...                  ← altri file del plugin
 ```
@@ -34,7 +34,7 @@ hoteldruid/
 - Un plugin è **attivo** se la sua cartella contiene `plugin.php`.
 - Per **disattivarlo** senza cancellarlo:
   - creare nella sua cartella un file vuoto chiamato `DISATTIVATO`;
-  - oppure rinominare la cartella con un `_` iniziale (es. `_anteprima_email`).
+  - oppure rinominare la cartella con un `_` iniziale (es. `_email_wysiwyg`).
 - Per disattivare **tutto il sistema**: cancellare o rinominare la cartella `plugins/`. Grazie a `file_exists()`, HotelDruid funziona esattamente come l'originale. Senza plugin attivi su una pagina, la pagina resta identica byte per byte.
 
 I nomi delle cartelle possono contenere solo lettere, cifre, `_` e `-`. I plugin sono caricati in ordine alfabetico di cartella.

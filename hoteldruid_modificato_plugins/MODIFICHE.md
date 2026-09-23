@@ -44,4 +44,4 @@ Le prove sono state fatte su un'installazione reale di prova: HotelDruid 3.0.8 d
 | Download RTF (modello 6), TXT (16), CSV (17) | `Content-Type` e contenuto originali, nessun intervento del plugin |
 | Altre pagine (`inizio.php`, `tabella.php`, documenti HTML) | nessun intervento, nessun errore nel log |
 | Accesso diretto a `plugins/caricatore.php`, `plugin.php`, `lingue.php` | risposta vuota |
-| Senza `plugins/` oppure con `plugins/anteprima_email/DISATTIVATO` | pagina identica byte per byte all'originale |
+| Senza `plugins/` oppure con `plugins/email_wysiwyg/DISATTIVATO` | pagina identica byte per byte all'originale |

@@ -1,5 +1,5 @@
 /*
- * Plugin "Anteprima email" per HotelDruid
+ * Plugin "email_wysiwyg" per HotelDruid
  * Nel modulo di invio di visualizza_contratto.php, per le email HTML, mostra al
  * posto del codice HTML il testo formattato in modo leggibile; il sorgente HTML
  * (la textarea originale, modificabile) si apre con "Mostra sorgente HTML".
