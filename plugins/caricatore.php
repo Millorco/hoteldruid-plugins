@@ -29,7 +29,7 @@ if (defined('HDP_CARICATORE') or !isset($pag) or !is_string($pag) or !isset($_SE
 if (realpath(dirname($_SERVER['SCRIPT_FILENAME'])) != realpath(dirname(dirname(__FILE__)))) return;
 
 define('HDP_CARICATORE',1);
-define('HDP_VERSIONE',"1.0");
+define('HDP_VERSIONE',"0.1");
 define('HDP_CARTELLA',dirname(__FILE__));
 
 global $hdp_agganci,$hdp_livello_ob;
