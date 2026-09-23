@@ -10,16 +10,12 @@ Il sistema si attiva con **una sola riga** aggiunta a `includes/funzioni.php`. T
 |----------|-----------|
 | [`plugins/`](plugins/) | Il caricatore (`caricatore.php`) e i plugin. Da copiare nella cartella principale di HotelDruid. Istruzioni e guida per scrivere plugin in [`plugins/README.md`](plugins/README.md). |
 | [`plugins/email_wysiwyg/`](plugins/email_wysiwyg/) | In `visualizza_contratto.php`, per le email HTML, mostra al posto del codice HTML il testo compilato e formattato in modo leggibile, con il pulsante `< >` per vedere e modificare il sorgente HTML. |
-| [`hoteldruid_modificato_plugins/`](hoteldruid_modificato_plugins/) | `includes/funzioni.php` con la riga di aggancio, `modifiche.patch` (diff rispetto a HotelDruid 3.0.8) e `MODIFICHE.md` con i dettagli e le prove eseguite. |
+| [`hoteldruid_modificato_plugins/`](hoteldruid_modificato_plugins/) | `includes/funzioni.php` di HotelDruid 3.0.8 con la riga di aggancio e `MODIFICHE.md` con i dettagli e le prove eseguite. |
 
 ## Installazione rapida
 
 1. Copiare `plugins/` nella cartella principale di HotelDruid, accanto a `inizio.php`.
-2. Dalla cartella di HotelDruid applicare la patch:
-   ```
-   patch -p1 < /percorso/hoteldruid_modificato_plugins/modifiche.patch
-   ```
-   In alternativa, aggiungere a mano in `includes/funzioni.php`, subito dopo `define('C_PHPR_VERSIONE_TXT',"3.0.8");`, la riga:
+2. In `includes/funzioni.php`, subito dopo `define('C_PHPR_VERSIONE_TXT',"3.0.8");`, aggiungere la riga:
    ```php
    if (file_exists("./plugins/caricatore.php")) include("./plugins/caricatore.php"); # sistema di plugin (facoltativo)
    ```

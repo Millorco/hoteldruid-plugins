@@ -18,10 +18,6 @@ hoteldruid/
 1. Copiare la cartella `plugins/` nella cartella principale di HotelDruid, accanto a `visualizza_contratto.php`, `inizio.php`, ecc.
 2. Aggiungere l'aggancio in `includes/funzioni.php` in uno di questi modi:
    - sostituire il file con `hoteldruid_modificato_plugins/includes/funzioni.php`, se la versione di HotelDruid è la stessa (3.0.8);
-   - oppure applicare la patch dalla cartella di HotelDruid:
-     ```
-     patch -p1 < /percorso/hoteldruid_modificato_plugins/modifiche.patch
-     ```
    - oppure aggiungere a mano, subito dopo la riga `define('C_PHPR_VERSIONE_TXT',"3.0.8");`, la riga:
      ```php
      if (file_exists("./plugins/caricatore.php")) include("./plugins/caricatore.php"); # sistema di plugin (facoltativo)

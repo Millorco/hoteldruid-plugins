@@ -6,7 +6,7 @@ Per attivare il sistema di plugin della cartella `plugins/` serve modificare **u
 |------|------|------|----------|
 | `includes/funzioni.php` | 90 (nuova, dopo la 89 dell'originale) | aggiunta | `if (file_exists("./plugins/caricatore.php")) include("./plugins/caricatore.php"); # sistema di plugin (facoltativo)` |
 
-Il diff unificato rispetto a `sorgente/` si trova in `modifiche.patch`. Si applica dalla cartella di HotelDruid con `patch -p1 < modifiche.patch`.
+La riga va aggiunta a mano, oppure si può sostituire `includes/funzioni.php` con la copia in questa cartella, se la versione di HotelDruid è la stessa (3.0.8).
 
 ## Perché `includes/funzioni.php`
 
