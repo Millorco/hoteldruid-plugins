@@ -5,7 +5,7 @@ Plugin per il sistema di plugin di `plugins/`. Non serve nessuna modifica a `vis
 ## Cosa fa
 
 In `visualizza_contratto.php`, per le email in formato **HTML**, mostra al posto del codice HTML il **testo già compilato e formattato in modo leggibile**, con le variabili già sostituite.
-- Il pulsante **"Mostra sorgente HTML" / "Nascondi sorgente HTML"** passa al codice HTML, che si può modificare come nell'originale, e poi di nuovo al testo formattato, aggiornato con le modifiche.
+- Il pulsante **`< >`** passa al codice HTML, che si può modificare come nell'originale, e poi di nuovo al testo formattato, aggiornato con le modifiche. Quando il sorgente è aperto il pulsante appare premuto; passandoci sopra con il mouse compare la descrizione ("Mostra sorgente HTML" / "Nascondi sorgente HTML", nella lingua dell'utente).
 - Se il modello prevede copie nascoste (Ccn) o immagini incorporate, che non compaiono nel modulo, una riga sotto il riquadro le riporta.
 - Le email in testo semplice restano come nell'originale.
 

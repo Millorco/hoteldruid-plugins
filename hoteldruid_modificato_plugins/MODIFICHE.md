@@ -38,7 +38,7 @@ Le prove sono state fatte su un'installazione reale di prova: HotelDruid 3.0.8 d
 |-------|-----------|
 | `php -l` su `caricatore.php`, `plugin.php`, `lingue.php`, `funzioni.php` modificato | nessun errore |
 | Email HTML (modello 8 reso HTML) con variabili da prenotazione | un solo riquadro con testo formattato e variabili sostituite; riga Ccn |
-| "Mostra sorgente HTML", modifica dell'HTML, ritorno al testo | vista aggiornata; il modulo invia il testo modificato e gli stessi campi dell'originale |
+| Pulsante del sorgente HTML, modifica dell'HTML, ritorno al testo | vista aggiornata; il modulo invia il testo modificato e gli stessi campi dell'originale |
 | Email in testo semplice (modelli 8, 9, 10 originali) | nessun intervento del plugin |
 | Invio (`manda_mail=SI`) | flusso originale fino a `mail()`, nessun intervento del plugin |
 | Download RTF (modello 6), TXT (16), CSV (17) | `Content-Type` e contenuto originali, nessun intervento del plugin |

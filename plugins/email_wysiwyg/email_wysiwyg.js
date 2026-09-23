@@ -2,7 +2,7 @@
  * Plugin "email_wysiwyg" per HotelDruid
  * Nel modulo di invio di visualizza_contratto.php, per le email HTML, mostra al
  * posto del codice HTML il testo formattato in modo leggibile; il sorgente HTML
- * (la textarea originale, modificabile) si apre con "Mostra sorgente HTML".
+ * (la textarea originale, modificabile) si apre con il pulsante "< >".
  * Il testo viene ricavato dal valore attuale della textarea (quello che verrà
  * inviato) e si aggiorna a ogni modifica. Non aggiunge campi al modulo e non ne
  * cambia i valori: l'invio resta identico a quello di HotelDruid.
@@ -257,7 +257,11 @@ function creaRiquadro(area, n) {
 
   riquadro = crea("div", "ape-riquadro");
   barra = crea("div", "ape-pulsanti");
-  bSorgente = creaPulsante(t("mostra_sorgente"));
+  // pulsante "< >": il testo non cambia, la descrizione (tooltip) sì
+  bSorgente = creaPulsante("< >");
+  bSorgente.title = t("mostra_sorgente");
+  bSorgente.setAttribute("aria-label", t("mostra_sorgente"));
+  bSorgente.setAttribute("aria-pressed", "false");
   barra.appendChild(bSorgente);
   vista = crea("div", "ape-corpo");
   if (larghezza) vista.style.width = larghezza + "px";
@@ -275,7 +279,10 @@ function creaRiquadro(area, n) {
     var sorgenteVisibile = (area.style.display === "none");
     mostra(area, sorgenteVisibile);
     mostra(vista, !sorgenteVisibile);
-    imposta(bSorgente.firstChild, sorgenteVisibile ? t("nascondi_sorgente") : t("mostra_sorgente"));
+    bSorgente.title = sorgenteVisibile ? t("nascondi_sorgente") : t("mostra_sorgente");
+    bSorgente.setAttribute("aria-label", bSorgente.title);
+    bSorgente.setAttribute("aria-pressed", sorgenteVisibile ? "true" : "false");
+    bSorgente.className = sorgenteVisibile ? "ape-pulsante ape-attivo" : "ape-pulsante";
     if (!sorgenteVisibile) aggiorna();
   };
 

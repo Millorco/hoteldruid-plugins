@@ -9,7 +9,7 @@ Il sistema si attiva con **una sola riga** aggiunta a `includes/funzioni.php`. T
 | Cartella | Contenuto |
 |----------|-----------|
 | [`plugins/`](plugins/) | Il caricatore (`caricatore.php`) e i plugin. Da copiare nella cartella principale di HotelDruid. Istruzioni e guida per scrivere plugin in [`plugins/README.md`](plugins/README.md). |
-| [`plugins/email_wysiwyg/`](plugins/email_wysiwyg/) | In `visualizza_contratto.php`, per le email HTML, mostra al posto del codice HTML il testo compilato e formattato in modo leggibile, con il pulsante "Mostra sorgente HTML". |
+| [`plugins/email_wysiwyg/`](plugins/email_wysiwyg/) | In `visualizza_contratto.php`, per le email HTML, mostra al posto del codice HTML il testo compilato e formattato in modo leggibile, con il pulsante `< >` per vedere e modificare il sorgente HTML. |
 | [`hoteldruid_modificato_plugins/`](hoteldruid_modificato_plugins/) | `includes/funzioni.php` con la riga di aggancio, `modifiche.patch` (diff rispetto a HotelDruid 3.0.8) e `MODIFICHE.md` con i dettagli e le prove eseguite. |
 
 ## Installazione rapida

@@ -9,6 +9,11 @@
 }
 .ape-pulsante div {
   padding: 1px 6px;
+  font-family: monospace;
+  font-weight: bold;
+}
+.ape-pulsante.ape-attivo {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.35);
 }
 .ape-corpo {
   box-sizing: border-box;

@@ -5,7 +5,7 @@
 #
 #    In visualizza_contratto.php, per le email HTML, mostra al posto del codice
 #    HTML il testo compilato e formattato in modo leggibile; il sorgente HTML
-#    (modificabile) si apre con "Mostra sorgente HTML".
+#    (modificabile) si apre con il pulsante "< >".
 #
 #    Distribuito con la stessa licenza di HotelDruid: GNU Affero General Public
 #    License versione 3 o successiva.
